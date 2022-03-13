@@ -14,7 +14,6 @@ import 'Cubit/CubiteStates.dart';
    BlocOverrides.runZoned(
          () {
            runApp( MyApp());
-           //wallahe walad
          },
      blocObserver: MyBlocObserver(),
    );
