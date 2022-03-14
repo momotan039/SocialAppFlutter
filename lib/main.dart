@@ -3,6 +3,7 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:socialapp/Screens/LayoutScreen/LayoutScreen.dart';
 import 'package:socialapp/Screens/LogInScreen/LogInScreen.dart';
 import 'package:socialapp/Screens/RegisterScreen/RegisterScreen.dart';
 import 'Cubit/BlocObserver.dart';
@@ -40,11 +41,16 @@ class MyApp extends StatelessWidget {
                     iconTheme: IconThemeData(
                         color: Colors.blue,
                         size: 35
-                    )
+                    ),
+                    titleTextStyle: TextStyle(
+                    fontSize: 30,
+                      color: Colors.green,
+                      fontWeight: FontWeight.bold
+                )
                 )
             ),
             debugShowCheckedModeBanner: false,
-            home:  LogInScreen(),
+            home:  LayoutScreen(),
           );
         },
         listener: (BuildContext context, Object? state) {  },),

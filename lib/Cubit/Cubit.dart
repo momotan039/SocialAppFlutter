@@ -8,6 +8,7 @@ import 'package:socialapp/Components/ContoolsComponents.dart';
 import 'package:socialapp/Screens/LayoutScreen/LayoutScreen.dart';
 import 'package:socialapp/models/User.dart';
 
+import '../Screens/LayoutScreen/LayoutScreen.dart';
 import 'CubiteStates.dart';
 
 class CubitSocialApp extends  Cubit<CubiteStates>{
@@ -94,6 +95,11 @@ class CubitSocialApp extends  Cubit<CubiteStates>{
                ));
           print(error.code);
     });
+  }
+
+  OnTabNavigationBar(index){
+    LayoutScreen.currentIndexScreen=index;
+    emit(OnTabNavigationBarState());
   }
 }
 
