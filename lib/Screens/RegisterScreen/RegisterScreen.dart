@@ -16,11 +16,13 @@ class RegisterScreen extends StatelessWidget {
    bool hidePassword=true;
    IconData IconPassword=Icons.visibility;
   @override
-  Widget build(BuildContext context) {
+  Widget build( context) {
     return BlocConsumer<CubitSocialApp,CubiteStates>(
-      listener: (BuildContext context, state) {
+      listener: ( context, state) {
       },
-      builder: (BuildContext context, Object? state) =>Scaffold(
+      builder: (context, state) {
+        var myCubit=CubitSocialApp.get(context);
+        return Scaffold(
         appBar: AppBar(),
         body: Center(
           child: SingleChildScrollView(
@@ -64,7 +66,7 @@ class RegisterScreen extends StatelessWidget {
                                 IconPassword=Icons.visibility;
                               else
                                 IconPassword=Icons.visibility_off;
-                              CubitSocialApp.get(context).HandleShowPassIcon();
+                              myCubit.HandleShowPassIcon();
                             },
                             icon: Icon(IconPassword))
                     ),
@@ -75,18 +77,25 @@ class RegisterScreen extends StatelessWidget {
                         prefixIcon_: Icons.phone
                     ),
                     SizedBox(height: 10),
-                    ElevatedButton(
-                      onPressed: (){
-                        if(!keyForm.currentState!.validate())
-                        return;
-                        CubitSocialApp.get(context).HandleButtonRegister(context,
-                            mail_:mailController.text,
-                            pass_:PasswordController.text,
-                            name_: UserNameController.text,
-                            phone_: PhoneController.text
-                        );
-                      },
-                      child: Text("Register"),
+                    myCubit.state is RegisterProgressState ?Center(child: CircularProgressIndicator()):
+                    Container(
+                      width: double.infinity,
+                      child: ElevatedButton(
+                        onPressed: (){
+                          if(!keyForm.currentState!.validate())
+                          return;
+                          myCubit.HandleButtonRegister(context,
+                              mail_:mailController.text,
+                              pass_:PasswordController.text,
+                              name_: UserNameController.text,
+                              phone_: PhoneController.text
+                          );
+                        },
+                        child: Text("Register",style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          fontSize: 25,
+                        ),)
+                      ),
                     )
                   ],
                 ),
@@ -94,7 +103,8 @@ class RegisterScreen extends StatelessWidget {
             ),
           ),
         ),
-      ),
+      );
+      },
     );
   }
 }

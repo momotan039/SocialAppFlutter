@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:socialapp/Components/ContoolsComponents.dart';
+import 'package:socialapp/Screens/LayoutScreen/LayoutScreen.dart';
 import 'package:socialapp/models/User.dart';
 
 import 'CubiteStates.dart';
@@ -18,12 +20,15 @@ class CubitSocialApp extends  Cubit<CubiteStates>{
 
   HandleButtonLogin(context,{required  mail_,required  pass_}){
     emit(LoginProgressState());
+
     FirebaseAuth.instance.signInWithEmailAndPassword(email: mail_, password: pass_)
         .then((value){
       emit(LoginSuccessState());
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-        content: Text('Welecome Back...'),
-      ));
+
+      NextScreen(context,
+          WidgetScreen: LayoutScreen(),
+          compleateRouting: false);
+
     }).catchError((error){
       emit(LoginFialdState());
       if(error.code=="invalid-email")
@@ -41,6 +46,7 @@ class CubitSocialApp extends  Cubit<CubiteStates>{
       }
       print(error.code);
     });
+
   }
 
   HandleButtonRegister(context,{required  mail_,required  pass_,required name_,required phone_}){
@@ -57,23 +63,13 @@ class CubitSocialApp extends  Cubit<CubiteStates>{
             phone:phone_
           );
 
-          var xsd=FirebaseFirestore.instance.collection('users').doc(value.user?.uid).set({
-            'map1': {
-              'key1': 'value1',
-              'key2': 'value2',
-            }}).then((value) => emit(CreateUserSuccessState()))
+          FirebaseFirestore.instance.collection('users')
+              .doc(value.user?.uid).set(UserModel.ToMap(user))
+              .then((value) => emit(CreateUserSuccessState()))
               .catchError((error) {
-            print(error.code);
-            emit(CreateUserFialdState());
-          });
-
-          // FirebaseFirestore.instance.collection('users')
-          //     .doc(value.user?.uid).set(UserModel.ToMap(user))
-          //     .then((value) => emit(CreateUserSuccessState()))
-          //     .catchError((error) {
-          //       print(error.code);
-          //       emit(CreateUserFialdState());
-          //     });
+                print(error.code);
+                emit(CreateUserFialdState());
+              });
 
       emit(RegisterSuccessState());
 

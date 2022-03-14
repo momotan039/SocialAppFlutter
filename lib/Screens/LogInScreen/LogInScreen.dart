@@ -51,6 +51,7 @@ class LogInScreen extends StatelessWidget {
                               },
                               icon: Icon(IconPassword))),
                       SizedBox(height: 10),
+                      myCubit.state is LoginProgressState ? Center(child: CircularProgressIndicator()):
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: Row(

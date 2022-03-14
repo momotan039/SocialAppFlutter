@@ -8,7 +8,6 @@ import 'package:socialapp/Screens/RegisterScreen/RegisterScreen.dart';
 import 'Cubit/BlocObserver.dart';
 import 'Cubit/Cubit.dart';
 import 'Cubit/CubiteStates.dart';
-import 'Screens/HomeScreen.dart';
 
  main() async {
    WidgetsFlutterBinding.ensureInitialized();
@@ -45,7 +44,7 @@ class MyApp extends StatelessWidget {
                 )
             ),
             debugShowCheckedModeBanner: false,
-            home:  HomeScreen(),
+            home:  LogInScreen(),
           );
         },
         listener: (BuildContext context, Object? state) {  },),
