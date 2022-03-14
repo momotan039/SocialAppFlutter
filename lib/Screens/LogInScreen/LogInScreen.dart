@@ -13,11 +13,14 @@ class LogInScreen extends StatelessWidget {
   var passwordController = TextEditingController();
   var userNameController = TextEditingController();
   var _formKey = GlobalKey<FormState>();
+  bool hidePassword=true;
+  IconData IconPassword=Icons.visibility;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CubitSocialApp,CubiteStates>(
       listener: (context,state){
       }, builder: (context, state) {
+        var myCubit=CubitSocialApp.get(context);
         return Scaffold(
           appBar: AppBar(),
           body: Center(
@@ -36,7 +39,17 @@ class LogInScreen extends StatelessWidget {
                       SizedBox(height: 10),
                       deffultTextFormField(controller_: mailController, label_text: 'Email',prefixIcon_: Icons.mail),
                       SizedBox(height: 10),
-                      deffultTextFormField(controller_: passwordController, label_text: 'Password',prefixIcon_: Icons.password),
+                      deffultTextFormField(controller_: passwordController, label_text: 'Password',prefixIcon_: Icons.password,isPass: hidePassword,
+                          suffixIcon_: IconButton(
+                              onPressed: (){
+                                hidePassword=!hidePassword;
+                                if(hidePassword)
+                                  IconPassword=Icons.visibility;
+                                else
+                                  IconPassword=Icons.visibility_off;
+                                myCubit.HandleShowPassIcon();
+                              },
+                              icon: Icon(IconPassword))),
                       SizedBox(height: 10),
                       Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -46,8 +59,7 @@ class LogInScreen extends StatelessWidget {
                                 onPressed: (){
                                   if(!_formKey.currentState!.validate())
                                     return;
-
-                                    CubitSocialApp.get(context).HandleButtonLogin(
+                                  myCubit.HandleButtonLogin(
                                         context,mail_: mailController.text,pass_:passwordController.text);
                                 },
                                 child: Text("LogIn")),

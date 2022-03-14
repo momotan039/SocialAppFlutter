@@ -9,15 +9,12 @@ import '../../Cubit/CubiteStates.dart';
 
 class RegisterScreen extends StatelessWidget {
    var keyForm=GlobalKey<FormState>();
-
    var UserNameController=TextEditingController();
-
    var mailController=TextEditingController();
-
    var PasswordController=TextEditingController();
-
    var PhoneController=TextEditingController();
-
+   bool hidePassword=true;
+   IconData IconPassword=Icons.visibility;
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<CubitSocialApp,CubiteStates>(
@@ -42,6 +39,7 @@ class RegisterScreen extends StatelessWidget {
                       ),),
                     SizedBox(height: 10),
                     deffultTextFormField(
+
                         controller_: UserNameController,
                         label_text: "User Name",
                         prefixIcon_: Icons.person_outline
@@ -57,7 +55,18 @@ class RegisterScreen extends StatelessWidget {
                     deffultTextFormField(
                         controller_: PasswordController,
                         label_text: "PassWord",
-                        prefixIcon_: Icons.password_outlined
+                        prefixIcon_: Icons.password_outlined,
+                        isPass: hidePassword,
+                        suffixIcon_: IconButton(
+                            onPressed: (){
+                              hidePassword=!hidePassword;
+                              if(hidePassword)
+                                IconPassword=Icons.visibility;
+                              else
+                                IconPassword=Icons.visibility_off;
+                              CubitSocialApp.get(context).HandleShowPassIcon();
+                            },
+                            icon: Icon(IconPassword))
                     ),
                     SizedBox(height: 10),
                     deffultTextFormField(
@@ -68,13 +77,14 @@ class RegisterScreen extends StatelessWidget {
                     SizedBox(height: 10),
                     ElevatedButton(
                       onPressed: (){
-                        if(keyForm.currentState!.validate())
-                        {
-                          CubitSocialApp.get(context).HandleButtonRegister(context,
-                              mail_:mailController.text,
-                              pass_:PasswordController.text
-                          );
-                        }
+                        if(!keyForm.currentState!.validate())
+                        return;
+                        CubitSocialApp.get(context).HandleButtonRegister(context,
+                            mail_:mailController.text,
+                            pass_:PasswordController.text,
+                            name_: UserNameController.text,
+                            phone_: PhoneController.text
+                        );
                       },
                       child: Text("Register"),
                     )

@@ -4,9 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socialapp/Screens/LogInScreen/LogInScreen.dart';
+import 'package:socialapp/Screens/RegisterScreen/RegisterScreen.dart';
 import 'Cubit/BlocObserver.dart';
 import 'Cubit/Cubit.dart';
 import 'Cubit/CubiteStates.dart';
+import 'Screens/HomeScreen.dart';
 
  main() async {
    WidgetsFlutterBinding.ensureInitialized();
@@ -43,7 +45,7 @@ class MyApp extends StatelessWidget {
                 )
             ),
             debugShowCheckedModeBanner: false,
-            home:  LogInScreen(),
+            home:  HomeScreen(),
           );
         },
         listener: (BuildContext context, Object? state) {  },),
