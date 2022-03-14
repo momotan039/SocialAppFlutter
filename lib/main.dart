@@ -4,8 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socialapp/Screens/LayoutScreen/LayoutScreen.dart';
-import 'package:socialapp/Screens/LogInScreen/LogInScreen.dart';
-import 'package:socialapp/Screens/RegisterScreen/RegisterScreen.dart';
 import 'Cubit/BlocObserver.dart';
 import 'Cubit/Cubit.dart';
 import 'Cubit/CubiteStates.dart';
@@ -39,7 +37,7 @@ class MyApp extends StatelessWidget {
                         statusBarColor:  Colors.grey[50]
                     ),
                     iconTheme: IconThemeData(
-                        color: Colors.blue,
+                        color: Colors.green,
                         size: 35
                     ),
                     titleTextStyle: TextStyle(

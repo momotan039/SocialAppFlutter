@@ -10,15 +10,19 @@ import 'package:socialapp/Screens/LayoutScreen/SettingsScreen/SettingsScreen.dar
 import 'package:socialapp/Screens/LayoutScreen/UsersScreen/UsersSettings.dart';
 
 class LayoutScreen extends StatelessWidget {
- List<Widget> listScreens=[HomeScreen(),ChatScreen(),UsersScreen(),SettingsScreen()];
- List<String> listTitle=["Home","Chat","Users","Settings"];
-   static  int currentIndexScreen=0;
- @override
- Widget build(BuildContext context) {
+  List<Widget> listScreens=[HomeScreen(),ChatScreen(),UsersScreen(),SettingsScreen()];
+  List<String> listTitle=["Home","Chat","Users","Settings"];
+  static  int currentIndexScreen=0;
+  @override
+  Widget build(BuildContext context) {
     return BlocConsumer<CubitSocialApp,CubiteStates>(
         builder: (context,stat)=> Scaffold(
           appBar: AppBar(
             title: Text(listTitle[currentIndexScreen]),
+            actions: [
+              IconButton(onPressed: (){}, icon: Icon(MyFlutterApp.bell)),
+              IconButton(onPressed: (){}, icon: Icon(MyFlutterApp.search)),
+            ],
           ),
           body: listScreens[currentIndexScreen],
           bottomNavigationBar: BottomNavigationBar(
@@ -36,7 +40,7 @@ class LayoutScreen extends StatelessWidget {
             fixedColor: Colors.green,
             currentIndex: currentIndexScreen,
             unselectedLabelStyle: TextStyle(
-                fontWeight: FontWeight.bold,
+              fontWeight: FontWeight.bold,
             ),
             selectedLabelStyle: TextStyle(
               fontWeight: FontWeight.bold,
