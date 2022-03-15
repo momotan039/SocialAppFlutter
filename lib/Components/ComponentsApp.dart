@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 
+import '../Style/style.dart';
 import 'my_flutter_app_icons.dart';
 
 Widget Article()=>Container(
@@ -37,7 +38,7 @@ Widget Article()=>Container(
                         ),
                         Icon(
                           Icons.verified,
-                          color: Colors.green,
+                          color: MainColor,
                         )
                       ],
                     ),
@@ -55,7 +56,7 @@ Widget Article()=>Container(
                   onPressed: () {},
                   icon: Icon(
                     MyFlutterApp.ellipsis_h,
-                    color: Colors.green,
+                    color: MainColor,
                   ))
             ],
           ),
@@ -96,7 +97,7 @@ Widget Article()=>Container(
               Expanded(child: Row(
                 children: [
                   Icon(MyFlutterApp.heart,
-                    color: Colors.green,),
+                    color: MainColor,),
                   SizedBox(width: 10,),
                   Text("120",
                     style: TextStyle(
@@ -108,7 +109,7 @@ Widget Article()=>Container(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
                   Icon(MyFlutterApp.comment_dots,
-                    color: Colors.green,),
+                    color: MainColor,),
                   SizedBox(width: 10,),
                   Text("120",
                     style: TextStyle(
@@ -147,7 +148,7 @@ Widget Article()=>Container(
                   child: Row(
                     children: [
                       Icon(MyFlutterApp.heart,
-                        color: Colors.green,),
+                        color: MainColor,),
                       SizedBox(width: 10,),
                       Text("Like")
                     ],

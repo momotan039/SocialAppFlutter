@@ -10,6 +10,7 @@ import 'package:socialapp/Screens/LayoutScreen/HomeScreen/HomeScreen.dart';
 import 'package:socialapp/Screens/LayoutScreen/SettingsScreen/SettingsScreen.dart';
 import 'package:socialapp/Screens/LayoutScreen/UsersScreen/UsersSettings.dart';
 
+import '../../Style/style.dart';
 import 'PostScreen/PostScreen.dart';
 
 class LayoutScreen extends StatelessWidget {
@@ -42,7 +43,7 @@ class LayoutScreen extends StatelessWidget {
               BottomNavigationBarItem(icon: Icon(MyFlutterApp.optin_monster),
                   label:"Settings"),
             ],
-            fixedColor: Colors.green,
+            fixedColor: MainColor,
             currentIndex: currentIndexScreen,
             unselectedLabelStyle: TextStyle(
               fontWeight: FontWeight.bold,

@@ -7,6 +7,7 @@ import 'package:socialapp/Screens/LayoutScreen/LayoutScreen.dart';
 import 'Cubit/BlocObserver.dart';
 import 'Cubit/Cubit.dart';
 import 'Cubit/CubiteStates.dart';
+import 'Style/style.dart';
 
  main() async {
    WidgetsFlutterBinding.ensureInitialized();
@@ -37,12 +38,12 @@ class MyApp extends StatelessWidget {
                         statusBarColor:  Colors.grey[50]
                     ),
                     iconTheme: IconThemeData(
-                        color: Colors.green,
+                        color: MainColor,
                         size: 35
                     ),
                     titleTextStyle: TextStyle(
                     fontSize: 30,
-                      color: Colors.green,
+                      color: MainColor,
                       fontWeight: FontWeight.bold
                 )
                 )
