@@ -17,3 +17,5 @@ class CreateUserSuccessState extends CubiteStates{}
 class CreateUserFialdState extends CubiteStates{}
 
 class OnTabNavigationBarState extends CubiteStates{}
+
+class OpeningPostScreenState extends CubiteStates{}

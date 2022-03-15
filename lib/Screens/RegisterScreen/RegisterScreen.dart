@@ -3,7 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../Components/Components.dart';
+import '../../Components/ComponentsFlutter.dart';
 import '../../Cubit/Cubit.dart';
 import '../../Cubit/CubiteStates.dart';
 

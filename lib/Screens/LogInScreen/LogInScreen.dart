@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:socialapp/Screens/RegisterScreen/RegisterScreen.dart';
 
-import '../../Components/Components.dart';
+import '../../Components/ComponentsFlutter.dart';
 import '../../Components/ContoolsComponents.dart';
 import '../../Cubit/Cubit.dart';
 import '../../Cubit/CubiteStates.dart';

@@ -98,8 +98,16 @@ class CubitSocialApp extends  Cubit<CubiteStates>{
   }
 
   OnTabNavigationBar(index){
-    LayoutScreen.currentIndexScreen=index;
-    emit(OnTabNavigationBarState());
+    if(index==2)
+      {
+        emit(OpeningPostScreenState());
+      }
+    else
+      {
+        LayoutScreen.currentIndexScreen=index;
+        emit(OnTabNavigationBarState());
+      }
+
   }
 }
 
