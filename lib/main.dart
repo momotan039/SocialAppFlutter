@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
                       color: MainColor,
                       fontWeight: FontWeight.bold
                 )
-                )
+                ),
             ),
             debugShowCheckedModeBanner: false,
             home:  LayoutScreen(),
